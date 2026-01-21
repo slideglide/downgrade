@@ -194,10 +194,33 @@
         background: rgba(220, 38, 38, 0.3);
     }
 
+    .steps {
+        counter-reset: step;
+    }
+
+    .step {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .step::before {
+        counter-increment: step;
+        content: counter(step);
+        position: absolute;
+        left: -42px;
+        top: -0.1em;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: rgba(234, 234, 240, 0.30);
+        pointer-events: none;
+        user-select: none;
+    }
+    
 </style>
 </head>
 <body>
 <div class="container">
+<div class="steps">
 
     <div class="warning" id="osWarning">
         <div class="warning-icon">⚠️</div>
@@ -223,13 +246,13 @@
         If Geometry Dash is stored somewhere else, the paths you need to use will be different.
     </div>
 
-    <p>
+    <p class="step">
         <a href="steam://open/console">Click here</a> to open the Steam console, or enter
         <code>steam://open/console</code>
         in the address bar of Edge or another browser.
     </p>
 
-    <p>
+    <p class="step">
         Paste the following command into the console and press Enter:
     </p>
 
@@ -237,11 +260,11 @@
         <li>download_depot 322170 322171 7678373534998244044</li>
     </ul>
 
-    <p>
+    <p class="step">
         Wait for Steam to finish downloading the depot.
     </p>
 
-    <p>
+    <p class="step">
         Open File Explorer and navigate to the following folder:
     </p>
 
@@ -251,11 +274,11 @@
         </li>
     </ul>
 
-    <p>
+    <p class="step">
         Copy <strong>everything inside</strong> this folder.
     </p>
 
-    <p>
+    <p class="step">
         Go to the Geometry Dash installation directory:
     </p>
 
@@ -265,11 +288,11 @@
         </li>
     </ul>
 
-    <p>
+    <p class="step">
         Paste the files and replace all existing files if prompted.
     </p>
 
-    <p>
+    <p class="step">
         To prevent Steam from automatically updating Geometry Dash, go to:
     </p>
 
@@ -292,7 +315,7 @@
         <a href="https://geode-sdk.org/install" target="_blank">the Geode website</a>.
     </p>
 
-    <p>
+    <p class="step">
         If Geometry Dash receives a new update, you will need to launch it through <code>Geometry Dash.exe</code> in
         the game's folder, or temporarily remove <strong>Read-only</strong> from <code>appmanifest_322170.acf</code> to
         update Geometry Dash then follow this guide to downgrade it again.
@@ -323,7 +346,7 @@
             <span>Source</span>
         </a>
     </div>
-
+</div>
 </div>
 </body>
 <script>

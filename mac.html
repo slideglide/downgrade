@@ -200,10 +200,33 @@
         background: rgba(220, 38, 38, 0.3);
     }
 
+    .steps {
+        counter-reset: step;
+    }
+
+    .step {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .step::before {
+        counter-increment: step;
+        content: counter(step);
+        position: absolute;
+        left: -42px;
+        top: -0.1em;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: rgba(234, 234, 240, 0.30);
+        pointer-events: none;
+        user-select: none;
+    }
+
 </style>
 </head>
 <body>
 <div class="container">
+<div class="steps">
 
     <div class="warning" id="osWarning">
         <div class="warning-icon">⚠️</div>
@@ -230,13 +253,13 @@
         If Geometry Dash is stored somewhere else, the paths you need to use will be different.
     </div>
 
-    <p>
+    <p class="step">
         <a href="steam://open/console">Click here</a> to open the Steam console, or enter
         <code>steam://open/console</code>
         in the address bar of Safari or another browser.
     </p>
 
-    <p>
+    <p class="step">
         Paste the following command into the console and press Enter:
     </p>
 
@@ -244,13 +267,13 @@
         <li>download_depot 322170 322172 8771064225227566581</li>
     </ul>
 
-    <p>Wait for the download to finish.</p>
+    <p class="step">Wait for the download to finish.</p>
 
-    <p>
+    <p class="step">
         Open Finder and press <code>⌘ Cmd + Shift + .</code> to enable viewing hidden files if you haven’t already.
     </p>
 
-    <p>
+    <p class="step">
         Copy <code>Geometry Dash.app</code> from the following location:
     </p>
 
@@ -263,7 +286,7 @@
         Tip: Right-click <code>Steam.app</code> and choose <strong>View Contents</strong> to access this folder.
     </div>
 
-    <p>
+    <p class="step">
         Paste the app into the directory below and replace the existing file if prompted:
     </p>
 
@@ -273,7 +296,7 @@
         </li>
     </ul>
 
-    <p>
+    <p class="step">
         To prevent Steam from automatically updating Geometry Dash, go to:
     </p>
 
@@ -295,7 +318,7 @@
         <a href="https://geode-sdk.org/install" target="_blank">the Geode website</a>.
     </p>
 
-    <p>
+    <p class="step">
         If Geometry Dash receives a new update, you will need to launch it through <code>Geometry Dash.app</code> in
         the game's folder, or temporarily remove <strong>Locked</strong> from <code>appmanifest_322170.acf</code> to
         update Geometry Dash then follow this guide to downgrade it again.
@@ -327,6 +350,7 @@
         </a>
     </div>
 
+</div>
 </div>
 </body>
 <script>
