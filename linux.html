@@ -272,9 +272,19 @@
 
       <ul>
         <li>
-          ~/.local/share/Steam/steamapps/content/app_322170/depot_322171
+          ~/.local/share/Steam/ubuntu12_32/steamapps/content/app_322170/depot_322171
         </li>
       </ul>
+      <p> If <code>~/.local/share/Steam</code> doesn't exist in your distro's Steam package, check this directory:
+      </p>
+      <ul>
+        <li>~/.steam/steam/ubuntu12_32/steamapps/content/app_322170/depot_322171</li>
+      <p> Or if you have Steam installed as a Flatpak (make sure Steam has the filesystem access permission):
+      </p>
+      <ul>
+        <li>~/.var/app/com.valvesoftware.Steam/data/Steam/ubuntu12_32/steamapps/content/app_322170/depot_322171</li>
+      </ul>
+
       <div class="footnote">
         Tip: <code>~</code> represents your <code>/home/username</code> folder on Linux.
     </div>
@@ -293,6 +303,20 @@
         </li>
       </ul>
 
+      <p> If <code>~/.local/share/Steam</code> doesn't exist: </p>
+
+      <ul>
+        <li>
+        ~/.steam/steam/steamapps/common/Geometry Dash
+      </ul>
+
+      <p>Or if you have Flatpak Steam:</p>
+
+      <ul>
+        <li>
+          ~/.var/app/com.valvesoftware.Steam/data/Steam/steamapps/common/Geometry Dash
+      </ul>
+
       <p class="step">
         Paste the files and replace all existing files if prompted.
       </p>
@@ -307,6 +331,17 @@
         </li>
       </ul>
 
+      <p>If <code>~/.local/share/Steam</code> doesn't exist:
+      <ul>
+        <li>
+          chmod 444 ~/.steam/steam/steamapps/appmanifest_322170.acf
+      </ul>
+      <p>Or if you have Flatpak Steam:</p>
+       <ul>
+        <li>
+          chmod 444 ~/.var/app/com.valvesoftware.Steam/data/Steam/steamapps/appmanifest_322170.acf
+       </ul>
+
       <h2>After Downgrading</h2>
       <p>
         You can now launch Geometry Dash through Steam and optionally install
@@ -316,7 +351,7 @@
 
       <p class="step">
         If Geometry Dash receives a new update, you will need to launch it through <code>GeometryDash.exe</code> in
-        the game's folder, or run <code>chmod 644 ~/.local/share/Steam/steamapps/appmanifest_322170.acf</code> to temporarily make the file writeable to
+        the game's folder, or run <code>chmod 644 steampath/appmanifest_322170.acf</code> (check the previous steps to determine your Steam folder path) to temporarily make the file writeable to
         update Geometry Dash, then follow this guide to downgrade it again.
       </p>
 
