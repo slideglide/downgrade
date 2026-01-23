@@ -108,6 +108,15 @@
         box-shadow: 0 12px 28px rgba(0,0,0,0.2);
     }
 
+    .menu a.linux button {
+        background: #111111;
+        color: #ffffff;
+    }
+
+    .menu a.linux button:hover {
+        background: #090909;
+    }
+
     .menu button img.icon {
         width: 20px;
         height: 20px;
@@ -166,6 +175,14 @@
                 <span>MacOS</span>
             </button>
         </a>
+
+        <a class="linux" href="linux.html">
+            <button>
+                <img class="icon" src="resources/linux2.png" alt="Linux logo">
+                <span>Linux</span>
+            </button>
+        </a>
+
     </div>
 </div>
 
@@ -187,7 +204,7 @@
             0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8
             c0-4.42-3.58-8-8-8Z"/>
         </svg>
-        <span>Source</span>
+        <span>Created by @beat___ and @slideglide</span>
     </a>
 </div>
 <script>
@@ -195,25 +212,39 @@
     const platform = navigator.platform.toLowerCase();
 
     const menu = document.querySelector(".menu");
-    const windowsBtn = menu.querySelector("a.windows");
-    const macBtn = menu.querySelector("a.mac");
+    if (!menu) return;
 
-    let preferred, secondary;
+    const buttons = {
+        windows: menu.querySelector("a.windows"),
+        mac: menu.querySelector("a.mac"),
+        linux: menu.querySelector("a.linux")
+    };
+
+    Object.keys(buttons).forEach(key => {
+        if (!buttons[key]) delete buttons[key];
+    });
+
+    let preferredKey;
 
     if (platform.includes("win")) {
-        preferred = windowsBtn;
-        secondary = macBtn;
+        preferredKey = "windows";
     } else if (platform.includes("mac")) {
-        preferred = macBtn;
-        secondary = windowsBtn;
+        preferredKey = "mac";
+    } else if (platform.includes("linux")) {
+        preferredKey = "linux";
     } else {
         return;
     }
 
-    menu.prepend(preferred);
+    const preferred = buttons[preferredKey];
+    const secondary = Object.values(buttons).filter(btn => btn !== preferred);
 
+    Object.values(buttons).forEach(btn => {
+        btn.classList.remove("preferred", "secondary");
+    });
+
+    menu.prepend(preferred);
     preferred.classList.add("preferred");
-    secondary.classList.add("secondary");
 
     const divider = document.createElement("div");
     divider.setAttribute("aria-hidden", "true");
@@ -221,7 +252,9 @@
     divider.style.background = "rgba(255, 255, 255, 0.2)";
     divider.style.margin = "4px 0";
     divider.style.borderRadius = "1px";
-    menu.insertBefore(divider, secondary);
+
+    menu.insertBefore(divider, secondary[0]);
+    secondary.forEach(btn => btn.classList.add("secondary"));
 
 })();
 </script>
