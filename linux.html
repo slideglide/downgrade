@@ -340,72 +340,60 @@
   </div>
 </body>
 <script>
-  function detectOS() {
+function detectOS() {
     const ua = navigator.userAgent.toLowerCase();
-    if (ua.indexOf('win') > -1 || ua.indexOf('windows nt') > -1) return 'windows';
+    if (ua.indexOf('win') > -1) return 'windows';
     if (ua.indexOf('mac') > -1) return 'macos';
     if (ua.indexOf('linux') > -1) return 'linux';
     return null;
-  }
+}
 
-
-  function initializeWarning() {
+function initializeWarning() {
     const currentOS = detectOS();
-    const isWindowsPage = window.location.pathname.includes('win.html');
-    const isMacPage = window.location.pathname.includes('mac.html');
-    const isLinuxPage = window.location.pathname.includes('linux.html');
+
+    const pages = {
+        windows: {
+            match: 'win.html',
+            label: 'Windows',
+            file: 'win.html'
+        },
+        macos: {
+            match: 'mac.html',
+            label: 'macOS',
+            file: 'mac.html'
+        },
+        linux: {
+            match: 'linux.html',
+            label: 'Linux',
+            file: 'linux.html'
+        }
+    };
 
     const warningEl = document.getElementById('osWarning');
     const warningText = document.getElementById('warningText');
     const warningButton = document.getElementById('warningButton');
 
-    let shouldShowWarning = false;
-    let targetPage = '';
+    const currentPageOS = Object.keys(pages).find(os =>
+        window.location.pathname.includes(pages[os].match)
+    );
 
-    if (isWindowsPage && (currentOS === 'macos' || currentOS === 'linux')) {
-      shouldShowWarning = true;
-      if (currentOS === 'macos') {
-        warningText.textContent = 'You appear to be on macOS. Did you mean to view the macOS guide?';
-        warningButton.textContent = 'View macOS Guide';
-        targetPage = 'mac.html';
-      } else {
-        warningText.textContent = 'You appear to be on Linux. Did you mean to view the Linux guide?';
-        warningButton.textContent = 'View Linux Guide';
-        targetPage = 'linux.html';
-      }
-    } else if (isMacPage && (currentOS === 'windows' || currentOS === 'linux')) {
-      shouldShowWarning = true;
-      if (currentOS === 'windows') {
-        warningText.textContent = 'You appear to be on Windows. Did you mean to view the Windows guide?';
-        warningButton.textContent = 'View Windows Guide';
-        targetPage = 'win.html';
-      } else {
-        warningText.textContent = 'You appear to be on Linux. Did you mean to view the Linux guide?';
-        warningButton.textContent = 'View Linux Guide';
-        targetPage = 'linux.html';
-      }
-    } else if (isLinuxPage && (currentOS === 'windows' || currentOS === 'macos')) {
-      shouldShowWarning = true;
-      if (currentOS === 'windows') {
-        warningText.textContent = 'You appear to be on Windows. Did you mean to view the Windows guide?';
-        warningButton.textContent = 'View Windows Guide';
-        targetPage = 'win.html';
-      } else {
-        warningText.textContent = 'You appear to be on macOS. Did you mean to view the macOS guide?';
-        warningButton.textContent = 'View macOS Guide';
-        targetPage = 'mac.html';
-      }
+    if (!currentPageOS || currentPageOS === currentOS) {
+        return;
     }
 
-    if (shouldShowWarning) {
-      warningEl.classList.add('show');
-      warningButton.addEventListener('click', () => {
-        window.location.href = targetPage;
-      });
-    }
-  }
+    const detected = pages[currentOS];
+    const target = pages[currentOS];
 
-  document.addEventListener('DOMContentLoaded', initializeWarning);
+    warningText.textContent = `You appear to be on ${detected.label}. Did you mean to view the ${detected.label} guide?`;
+    warningButton.textContent = `View ${detected.label} Guide`;
+
+    warningEl.classList.add('show');
+    warningButton.addEventListener('click', () => {
+        window.location.href = target.file;
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initializeWarning);
 </script>
 <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 </body>
