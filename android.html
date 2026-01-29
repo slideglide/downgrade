@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta property="og:title" content="GD 2.2074 Downgrade Guide (Windows)">
+<meta property="og:title" content="GD 2.2074 Downgrade Guide (Android)">
 <meta property="og:description" content="Step-by-step guide to downgrade Geometry Dash to version 2.2074.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://beatacvr.github.io/downgrade">
 
-<title>Windows Downgrade Guide</title>
+<title>Android Downgrade Guide</title>
 <style>
     body {
         font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -35,11 +35,11 @@
         flex-shrink: 0;
     }
 
-    .windows-logo {
-        filter: brightness(0) saturate(100%) invert(56%) sepia(73%) saturate(440%) hue-rotate(187deg) brightness(96%) contrast(87%);
+    .android-logo {
+        filter: invert(55%) sepia(86%) saturate(427%) hue-rotate(88deg) brightness(95%) contrast(92%);
     }
 
-    .steam-logo {
+    .playstore-logo {
         display: inline;
         height: 1em;
         vertical-align: -0.125em;
@@ -230,101 +230,39 @@
         <button class="warning-button" id="warningButton"></button>
     </div>
 
-    <h1><img src="resources/windows.png" alt="Windows" class="windows-logo">Windows Guide for Downgrading to <strong>2.2074</strong></h1>
+    <h1><img src="resources/android.png" alt="Android" class="android-logo">Android Guide for Downgrading to <strong>2.2074</strong></h1>
 
     <hr>
 
     <p>
-        <strong>You must own Geometry Dash on <img src="resources/steam.png" alt="Steam" class="steam-logo">Steam for this guide to work.</strong><br>
+        <strong>You must own Geometry Dash on the <img src="resources/playstore.png" alt="Play Store" class="playstore-logo"> Google Play Store for this guide to work.</strong><br>
         It is recommended to save your account data to the cloud before proceeding with this guide.
     </p>
 
     <hr>
 
     <div class="footnote">
-        Note: This guide assumes Geometry Dash is installed to the default Steam install location. 
-        If Geometry Dash is stored somewhere else, the paths you need to use will be different.
+        Note: All Geometry Dash save data will be lost when downgrading. Make sure to save your data to the cloud before starting.
     </div>
 
     <p class="step">
-        <a href="steam://open/console">Click here</a> to open the Steam console, or enter
-        <code>steam://open/console</code>
-        in the address bar of Edge or another browser.
-    </p>
+        This guide is still under construction. Check back later for a full guide.
+        If you would like to continue on your own, here are some broad tips:
+    </p>    
 
     <p class="step">
-        Paste the following command into the console and press Enter:
-    </p>
-
-    <ul>
-        <li>download_depot 322170 322171 7678373534998244044</li>
-    </ul>
-
-    <p class="step">
-        Wait for Steam to finish downloading the depot.
-    </p>
-
-    <p class="step">
-        Open File Explorer and navigate to the following folder:
-    </p>
-
-    <ul>
-        <li>
-            C:\Program Files (x86)\Steam\steamapps\content\app_322170\depot_322171
-        </li>
-    </ul>
-
-    <p class="step">
-        Copy <strong>everything inside</strong> this folder.
-    </p>
-
-    <p class="step">
-        Go to the Geometry Dash installation directory:
-    </p>
-
-    <ul>
-        <li>
-            C:\Program Files (x86)\Steam\steamapps\common\Geometry Dash
-        </li>
-    </ul>
-
-    <p class="step">
-        Paste the files and replace all existing files if prompted.
-    </p>
-
-    <p class="step">
-        To prevent Steam from automatically updating Geometry Dash, go to:
-    </p>
-
-    <ul>
-        <li>
-            C:\Program Files (x86)\Steam\steamapps
-        </li>
-    </ul>
-
-    <p>
-        Right-click <code>appmanifest_322170.acf</code>, select <strong>Properties</strong>,
-        enable the <strong>Read-only</strong> checkbox, click <strong>Apply</strong>,
-        then press <strong>OK</strong>.
+        You will need <a href="https://auroraoss.com/files">Aurora Store</a> to download older version of Geometry Dash.<br>
+        Download 2.2074 from Aurora Store using your Google account. Disable automatic updates.
     </p>
 
     <h2>After Downgrading</h2>
     <p>
-        You can now launch Geometry Dash through Steam and optionally install
-        <strong>Geode v4.10.1</strong> from
-        <a href="https://geode-sdk.org/install" target="_blank">the Geode website</a>.
-    </p>
-
-    <p class="step">
-        If Geometry Dash receives a new update, you will need to launch it through <code>GeometryDash.exe</code> in
-        the game's folder, or temporarily remove <strong>Read-only</strong> from <code>appmanifest_322170.acf</code> to
-        update Geometry Dash then follow this guide to downgrade it again.
+        Under construction.
     </p>
 
     <h2>To get back to 2.2081</h2>
     <p>
-        Remove <strong>Read-only</strong> from <code>appmanifest_322170.acf</code>, then right click Geometry Dash in Steam's sidebar. Click <code>Properties</code>, navigate to <code>Installed Files</code>,
-        then click <code>Verify integrity of game files</code>.
+        Under construction.
     </p>
 
     <div class="back">

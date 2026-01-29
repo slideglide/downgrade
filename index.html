@@ -117,6 +117,15 @@
         background: #090909;
     }
 
+    .menu a.android button {
+        background: #3DDC84;
+        color: #000000;
+    }
+
+    .menu a.android button:hover {
+        background: #2ebf79;
+    }
+
     .menu button img.icon {
         width: 20px;
         height: 20px;
@@ -184,6 +193,13 @@
             </button>
         </a>
 
+        <a class="android" href="android.html">
+            <button>
+                <img class="icon" src="resources/android.png" alt="Android logo">
+                <span>Android</span>
+            </button>
+        </a>
+
         <a class="linux" href="linux.html">
             <button>
                 <img class="icon" src="resources/linux2.png" alt="Linux logo">
@@ -229,7 +245,8 @@
     const buttons = {
         windows: menu.querySelector("a.windows"),
         mac: menu.querySelector("a.mac"),
-        linux: menu.querySelector("a.linux")
+        linux: menu.querySelector("a.linux"),
+        android: menu.querySelector("a.android")
     };
 
     Object.keys(buttons).forEach(key => {
@@ -244,6 +261,8 @@
         preferredKey = "mac";
     } else if (platform.includes("linux")) {
         preferredKey = "linux";
+    } else if (platform.includes("android")) {
+        preferredKey = "android";
     } else {
         return;
     }
